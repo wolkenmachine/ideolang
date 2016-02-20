@@ -1,0 +1,21 @@
+body {
+    font-family: 'Univers', Arial;
+    font-size: 14pt;
+}
+
+#content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.section {
+    padding-bottom: 20px;
+    border-bottom: 1px solid grey;
+}
+
+.characterBlock{
+    width: 160px;
+    padding-top: 20px;
+    float: left;
+    text-align: center;
+}

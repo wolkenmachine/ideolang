@@ -1,0 +1,46 @@
+body{
+    font-family: 'Univers', Arial;
+    font-size: 20pt;
+}
+
+#name{
+    padding-left: 55px;
+}
+
+#toolbar{
+    float: left;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+#content{
+    float: right;
+}
+
+p{
+    margin: 0px;
+    cursor: pointer;
+}
+
+#saveButton{
+    position: absolute;
+    bottom : 0px;
+    font-size:10pt;
+    padding: 3px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+#editor{
+    position: absolute;
+    margin: auto;
+    left: -40px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 310px;
+    height: 300px;
+
+    cursor:url(drawButton.png), default;
+}
