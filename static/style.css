@@ -14,8 +14,18 @@ body {
 }
 
 .characterBlock{
+    margin:40px;
     width: 160px;
     padding-top: 20px;
     float: left;
     text-align: center;
+}
+
+.characterBlock > canvas {
+    margin-bottom: 20px;
+}
+
+.characterBlock > a {
+    font-size: 12pt;
+    color: black;
 }
