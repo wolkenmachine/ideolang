@@ -17,10 +17,24 @@
                     A collaborative ideographic language. This is a prototype by <a href="http://www.wolkenmachine.nl">wolkenmachine</a>.
                 </p>
             </div>
-            <div id="characters">
+            <div class="section" id="characters">
 
             </div>
+            <div id="footer">
+                <p>
+                    Add new: <input id="newChar" type="text"></input> <button onclick="newChar()">Add</button>
+                </p>
+            </div>
         </div>
+
+        <script type="text/javascript">
+            function newChar(){
+                var input = document.getElementById("newChar");
+                var val = input.value;
+                val = val.toLowerCase();
+                window.location.assign("/edit/"+val);
+            }
+        </script>
 
         <script type="text/javascript">
 
@@ -80,7 +94,6 @@
                     charElem.appendChild(name);
 
                     container.appendChild(charElem);
-
                 }
             }
 
