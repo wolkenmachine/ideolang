@@ -48,8 +48,8 @@
                     charElem.setAttribute('class', 'characterBlock');
 
                     var canvas = document.createElement("canvas");
-                    canvas.setAttribute('width', 140);
-                    canvas.setAttribute('height', 140);
+                    canvas.setAttribute('width', 80);
+                    canvas.setAttribute('height', 80);
                     content.appendChild(canvas);
 
                     ctx = canvas.getContext("2d");
@@ -57,7 +57,7 @@
 
 
                     //lines
-                    var s = 10;
+                    var s = 5;
                     ctx.lineWidth= s*0.75;
                     ctx.lineJoin = 'round';
                     ctx.lineCap = 'round';
