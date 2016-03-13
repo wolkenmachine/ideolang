@@ -1,5 +1,5 @@
 body {
-    font-family: 'Univers', Arial;
+    font-family: Arial;
     font-size: 14pt;
 }
 
@@ -25,22 +25,20 @@ body {
 }
 
 .characterBlock{
-    margin:40px;
+    padding: 20px;
+    margin: 20px;
     width: 80px;
-    height: 110px;
-    padding-top: 20px;
+    height: 140px;
     text-align: center;
     float: left;
 }
 
-
 .characterBlock > canvas {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     clear: both;
 }
 
-.characterBlock > a {
+.characterBlock > .characterName {
     font-size: 12pt;
     color: black;
-    display: block;
 }
