@@ -27,6 +27,7 @@ body {
 .characterBlock{
     margin:40px;
     width: 80px;
+    height: 110px;
     padding-top: 20px;
     text-align: center;
     float: left;
