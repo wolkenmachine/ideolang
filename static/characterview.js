@@ -20,7 +20,7 @@ var CharacterView = {
 
             for(var j in lines){
                 var line = lines[j];
-                console.log(line);
+                //console.log(line);
                 var a = [points[line[0]][0], points[line[0]][1]];
                 var b = [points[line[1]][0], points[line[1]][1]];
 

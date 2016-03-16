@@ -8,6 +8,10 @@ body {
     margin: 0 auto;
 }
 
+header {
+    margin-top: 100px;
+}
+
 #characters {
     overflow: auto;
 }
@@ -16,6 +20,13 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
     clear: both;
+}
+
+#search {
+    width: 100%;
+    font-family: Arial;
+    font-size: 14pt;
+    padding: 10px;
 }
 
 .section {
