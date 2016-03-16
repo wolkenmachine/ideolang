@@ -27,6 +27,7 @@ var App = {
     controller: function(){
         this.search = function(e){
             Ideolang.searchList(e.target.value);
+            m.redraw.strategy("all");
         };
     },
     view: function(ctrl){
