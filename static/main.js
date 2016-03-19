@@ -25,9 +25,10 @@ var Ideolang = (function(){
 
 var App = {
     controller: function(){
+        this.value = "";
         this.search = function(e){
+            this.value = e.target.value;
             Ideolang.searchList(e.target.value);
-            m.redraw.strategy("all");
         };
     },
     view: function(ctrl){
@@ -35,10 +36,10 @@ var App = {
             m("header", [
                 m("h1", "ideolang"),
                 m("p", "A collaborative ideographic language"),
-                m("input", {onkeyup: ctrl.search.bind(ctrl), id: "search", type: "text", placeholder: "search character"})
+                m("input", {value: ctrl.value, onkeyup: ctrl.search.bind(ctrl), id: "search", type: "text", placeholder: "search character"})
             ]),
             m("div", {class:"section", id:"characters"}, m.component(Overview)),
-            m("div", {id: "footer"}, "goodby!")
+            m.component(AddCharacter)
         ]);
     }
 };

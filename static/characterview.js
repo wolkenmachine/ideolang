@@ -1,7 +1,6 @@
 var CharacterView = {
-    controller: function(char){
+    view: function(ctrl, char){
         this.draw = function(canvas){
-
             canvas.setAttribute('width', 80);
             canvas.setAttribute('height', 80);
 
@@ -33,7 +32,7 @@ var CharacterView = {
             }
 
             //draw cross
-            if(lines.length==0){
+            if(lines.length===0){
                 ctx.beginPath();
                     ctx.moveTo(6*s+10, 4*s+10);
                     ctx.lineTo(6*s+10, 8*s+10);
@@ -45,9 +44,8 @@ var CharacterView = {
                 ctx.stroke();
             }
 
-        }
-    },
-    view: function(ctrl){
-        return m("canvas", {config: ctrl.draw})
+        };
+
+        return m("canvas", {config: this.draw});
     }
-}
+};
