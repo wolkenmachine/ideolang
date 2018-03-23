@@ -1,20 +1,45 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
+	font-size: 14pt;
 	width: 100%;
 	height: 100%;
-	margin: 40px;
+	margin: 0px;
 	padding: 0px;
 }
 
+header {
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+	width: 100%;
+	background-color: white;
+	padding-left: 10px;
+	box-sizing: border-box;
+	position: fixed;
+	top: 0px;
+}
+
 h1 {
-	font-weight: 400;
+	font-weight: 300;
+	margin: 0px;
+	padding: 0px;
+	font-size: 16pt;
 }
 
-.article {
-	width: 50%;
+.tagline {
+	font-size: 12px;
 }
 
-div {
-	margin-bottom: 30px;
+.overview {
+	margin-top: 50px;
+	width: 660px;
+	margin-left: calc(50% - 330px)
+}
+
+.ideogram {
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	margin: 10px;
 }

@@ -1,13 +1,65 @@
+var Ideogram = function(){
+	return {
+		view: function(vnode){
+			var gram = vnode.attrs.gram;
+			var factor = (1/13)*200;
+			function getpoint(line, seg, p){
+				return (gram.points[line[seg]][p]+1)*factor;
+			}
+			return m("svg.ideogram", {
+				width: 200,
+				height: 200
+			}, gram.lines.map((line)=>{
+				return m("line",{
+					x1: getpoint(line, 0, 0),  y1: getpoint(line, 0, 1),
+					x2: getpoint(line, 1, 0), y2: getpoint(line, 1, 1),
+					"stroke-width": 15,
+					"stroke": "black",
+					"stroke-linecap": "round"
+				});
+			}));
+		}
+	};
+};
+
+/*
+<svg width="120" height="120" viewBox="0 0 120 120"
+    xmlns="http://www.w3.org/2000/svg">
+
+  <line x1="20" y1="100" x2="100" y2="20"
+      stroke-width="2" stroke="black"/>
+</svg>
+*/
+
+var Overview = function(){
+	return {
+		view: function(vnode){
+			return m(".overview", [
+				model.ideograms.map((e)=>{
+					return m(Ideogram, {gram: e});
+				})
+			]);
+		}
+	};
+};
+
+var Menu = function(){
+	return {
+		view: function(vnode){
+			return m("header", [
+				m("h1", "Ideolang")
+			]);
+		}
+	};
+};
+
 var App = function(){
 	return {
 		view: function(vnode){
-			return m(".article", [
-				m("h1", "Ideolang"),
-				m("div", "A collaborative, evolving, ideographic language."),
-				m("div", "There have been many attempts at creating universal languages before, most of these have been created by a single author. Rather than trying to design an isolated and complex lingua franca, Ideolang is much more like a pidgin language: a grammatically simplified means of communication that develops between groups that do not have a language in common."),
-				m("div", "Real languages emerge from interactions between it's users. The words we choose to create reflect what is important in the situation it is used. The world has become increasingly complex and interconnected, but our languages have remained largely separated. Dispite the fact that most of our problems now transgress the boundries of culture or language."),
-				m("div", "Ideolang is an attempt to create a global worldview.")
-			]);
+			return [
+				m(Menu),
+				m(Overview)
+			];
 		}
 	};
 };
