@@ -43,3 +43,8 @@ h1 {
 	display: inline-block;
 	margin: 10px;
 }
+
+.ideogram-word {
+	text-align: center;
+	width: 100%;
+}
