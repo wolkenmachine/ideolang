@@ -48,3 +48,21 @@ h1 {
 	text-align: center;
 	width: 100%;
 }
+
+rect.ideogram-point {
+	stroke-width:1;
+	stroke: red;
+	fill: red;
+	fill-opacity: 0;
+}
+
+rect.ideogram-point:hover {
+	fill-opacity: 1;
+}
+
+.ideogram-line {
+	stroke-width: 15;
+	stroke: black;
+	stroke-linecap: round;
+	fill: none;
+}
