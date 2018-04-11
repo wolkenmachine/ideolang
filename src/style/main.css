@@ -1,6 +1,6 @@
 body {
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 14pt;
 	width: 100%;
 	height: 100%;
@@ -15,13 +15,21 @@ header {
 	width: 100%;
 	background-color: white;
 	padding-left: 10px;
+	padding-right: 15px;
 	box-sizing: border-box;
 	position: fixed;
 	top: 0px;
 }
 
+.header-right {
+	float: right;
+	display: inline-block;
+	font-size: 12pt;
+}
+
 h1 {
-	font-weight: 300;
+	font-weight: 400;
+	display: inline-block;
 	margin: 0px;
 	padding: 0px;
 	font-size: 16pt;
@@ -31,15 +39,51 @@ h1 {
 	font-size: 12px;
 }
 
-.overview {
-	margin-top: 50px;
+.app {
+	margin-top: 150px;
+
+}
+
+.overview{
 	width: 660px;
 	margin-left: calc(50% - 330px)
 }
+.details {
+	margin-left: 30px;
+}
+
+.details-languages {
+	font-size: 12pt;
+	display: inline-block;
+	width: 300px;
+}
+
+.details-language-unknown {
+	color: grey;
+}
+
+.details-current {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.details-meaning {
+	margin-left: 30px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.details-meaning-main {
+	font-size: 24pt;
+}
+
+.details-meaning-new {
+	font-size: 12pt;
+	color: grey;
+	margin-top: 10px;
+}
 
 .ideogram {
-	width: 200px;
-	height: 200px;
 	display: inline-block;
 	margin: 10px;
 }
