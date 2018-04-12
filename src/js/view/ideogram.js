@@ -28,13 +28,14 @@ var Ideogram = function(){
 			}
 
 			return m(".ideogram", {
+				class: "size-"+size,
 				onclick: function(){
 					controller.navigation.gotoIdeogramDetails(vnode.attrs.gram.id);
 				}
 			},[
 				m("svg", {
 					width: size,
-					height: size
+					height: size,
 				}, [
                     gram.lines.map((line)=>{
     					if(line.length === 2){

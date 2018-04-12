@@ -44,10 +44,11 @@ h1 {
 
 }
 
-.overview{
+.overview {
 	width: 660px;
 	margin-left: calc(50% - 330px)
 }
+
 .details {
 	margin-left: 30px;
 }
@@ -58,13 +59,22 @@ h1 {
 	width: 300px;
 }
 
+.details-language {
+	cursor: pointer;
+}
+
 .details-language-unknown {
 	color: grey;
+}
+
+.details-language-current {
+	text-decoration: underline;
 }
 
 .details-current {
 	display: inline-block;
 	vertical-align: top;
+	width: calc(100% - 300px);
 }
 
 .details-meaning {
@@ -77,10 +87,30 @@ h1 {
 	font-size: 24pt;
 }
 
-.details-meaning-new {
+.details-newelement {
 	font-size: 12pt;
 	color: grey;
 	margin-top: 10px;
+	cursor: pointer;
+}
+
+.details-related {
+	margin-top: 100px;
+}
+
+.details-related-el {
+	width: 30%;
+	display: inline-block;
+}
+
+.details-related-meaning {
+	display: inline-block;
+	font-size: 24pt;
+	vertical-align: middle;
+}
+
+.details-related .ideogram {
+	vertical-align: middle;
 }
 
 .ideogram {
@@ -104,9 +134,19 @@ rect.ideogram-point:hover {
 	fill-opacity: 1;
 }
 
+
+
 .ideogram-line {
 	stroke-width: 15;
 	stroke: black;
 	stroke-linecap: round;
 	fill: none;
+}
+
+.ideogram.size-200 .ideogram-line {
+	stroke-width: 10;
+}
+
+.ideogram.size-70 .ideogram-line {
+	stroke-width: 4;
 }
