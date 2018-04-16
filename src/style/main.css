@@ -28,6 +28,18 @@ header {
 	cursor: pointer;
 }
 
+.header-left {
+    vertical-align: middle;
+    margin-right: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.header-left:hover {
+	background-color: #e9e9e9;
+}
+
 h1 {
 	font-weight: 400;
 	display: inline-block;
@@ -64,6 +76,10 @@ h1 {
 	cursor: pointer;
 }
 
+.details-language:hover {
+	text-decoration: underline;
+}
+
 .details-language-unknown {
 	color: grey;
 }
@@ -95,6 +111,11 @@ h1 {
 	cursor: pointer;
 }
 
+.details-newelement:hover {
+	color: black;
+}
+
+
 .details-related {
 	margin-top: 100px;
 }
@@ -114,13 +135,26 @@ h1 {
 	vertical-align: middle;
 }
 
-.details-edit-button {
-	font-size: 10pt;
+.details-edit {
 	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	border: 1px solid white;
 }
 
-.ideogram {
-	display: inline-block;
+.details-edit:hover {
+	border: 1px solid grey;
+}
+
+.details-edit img {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	display: none;
+}
+
+.details-edit:hover img {
+	display: block;
 }
 
 .ideogram-word {

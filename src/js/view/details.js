@@ -14,13 +14,15 @@ var Details = function(){
                 })),
 				m(".details-current",[
 					(gram.loading) ? m(Loading) :[
-						m(".details-edit-button",{
+						m(".details-edit",{
 							onclick: function(){
 								controller.design.pushNewDesign();
 								controller.navigation.gotoIdeogramEditor(viewmodel.focus);
 							}
-						},"edit"),
-						m(Ideogram,{gram: gram, size: 300}),
+						},[
+							m("img",{src: "/buttons/drawButton.png"}),
+							m(Ideogram,{gram: gram, size: 300}),
+						]),
 						m(".details-meaning", [
 							gram.meaning[viewmodel.language] ? [
 								m(".details-meaning-main", gram.meaning[viewmodel.language][0]),
