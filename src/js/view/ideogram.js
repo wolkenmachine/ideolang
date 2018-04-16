@@ -5,7 +5,7 @@ var Ideogram = function(){
             var size = vnode.attrs.size || 200;
 
             var grid = 12;
-            var edgeoffset = 0;
+            var edgeoffset = 2;
             var factor = (1/(grid+edgeoffset*2))*size;
 
             var gridarray = Array.from({length: -1+grid+edgeoffset*2}, (x,i) => i+1-edgeoffset);

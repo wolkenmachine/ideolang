@@ -2,7 +2,7 @@ var Details = function(){
 	return {
 		view: function(vnode){
             var gram = controller.getIdeogram(viewmodel.focus);
-			return m(".details", [
+			return 	(gram.loading) ? m(Loading) : m(".details", [
                 m(".details-languages", model.languages.map(function(l){
                     return m("div", m("span.details-language",{
 						class: (gram.meaning[l] ? "details-language-known" : "details-language-unknown") + " " +
@@ -13,8 +13,8 @@ var Details = function(){
 					}, gram.meaning[l] ? gram.meaning[l][0] : l));
                 })),
 				m(".details-current",[
-					(gram.loading) ? m(Loading) :[
 						m(".details-edit",{
+							class: (gram.ideogram[0].points.length === 0) ? "empty" : "",
 							onclick: function(){
 								controller.design.pushNewDesign();
 								controller.navigation.gotoIdeogramEditor(viewmodel.focus);
@@ -39,10 +39,14 @@ var Details = function(){
 						]),
 						m(".details-related", gram.related.map(function(other){
 							var gram = controller.getIdeogram(other);
-							return m(".details-related-el",[
-								m(Ideogram,{gram: gram, size: 70}),
-								gram.meaning[viewmodel.language] ? m(".details-related-meaning", gram.meaning[viewmodel.language][0]) : []
-							]);
+							return (gram.loading) ? m(Loading) : m(".details-related-el",{
+									onclick: function(){
+										controller.navigation.gotoIdeogramDetails(other);
+									}
+								},[
+									m(Ideogram,{gram: gram, size: 70}),
+									gram.meaning[viewmodel.language] ? m(".details-related-meaning", gram.meaning[viewmodel.language][0]) : []
+								]);
 						})),
 						m(NewRelation, {
 							id: gram.id,
@@ -50,7 +54,6 @@ var Details = function(){
 							placeholder: "enter new relation",
 							onnew: controller.newRelation
 						})
-					],
 				])
             ]);
 		}

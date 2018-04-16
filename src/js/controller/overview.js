@@ -52,6 +52,15 @@ var controller = {
             model.ideograms[id].id = id;
         });
     },
+    newIdeogram: function(callback){
+        m.request({
+            method: "GET",
+            url: API_ENDPOINT+"new",
+        }).then(function(data){
+            callback(data.id);
+        });
+    },
+
     loadOverview: function(){
         m.request({
             method: "GET",
