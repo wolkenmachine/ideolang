@@ -1,7 +1,7 @@
 function draghandler(ondrag, onrelease){
     function drag(e){
-        m.redraw();
         if(ondrag) ondrag(e);
+        m.redraw();
     }
 
     function release(e){

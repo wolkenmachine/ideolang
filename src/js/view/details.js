@@ -4,16 +4,22 @@ var Details = function(){
             var gram = controller.getIdeogram(viewmodel.focus);
 			return m(".details", [
                 m(".details-languages", model.languages.map(function(l){
-                    return m(".details-language",{
+                    return m("div", m("span.details-language",{
 						class: (gram.meaning[l] ? "details-language-known" : "details-language-unknown") + " " +
 						       (l === viewmodel.language ? "details-language-current" : ""),
 						onclick: function(){
 							viewmodel.language = l;
 						}
-					}, gram.meaning[l] ? gram.meaning[l][0] : l);
+					}, gram.meaning[l] ? gram.meaning[l][0] : l));
                 })),
 				m(".details-current",[
 					(gram.loading) ? m(Loading) :[
+						m(".details-edit-button",{
+							onclick: function(){
+								controller.design.pushNewDesign();
+								controller.navigation.gotoIdeogramEditor(viewmodel.focus);
+							}
+						},"edit"),
 						m(Ideogram,{gram: gram, size: 300}),
 						m(".details-meaning", [
 							gram.meaning[viewmodel.language] ? [

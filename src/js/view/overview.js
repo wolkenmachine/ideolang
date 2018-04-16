@@ -5,7 +5,13 @@ var Overview = function(){
 				viewmodel.overview.map((e)=>{
 					var gram = controller.getIdeogram(e);
 					if(!gram.loading){
-						return m(Ideogram,{gram: gram});
+						return m(".overview-el",{
+							onclick: function(){
+								controller.navigation.gotoIdeogramDetails(gram.id);
+							}
+						},[
+							m(Ideogram,{gram: gram})
+						]);
 					}
 					return "loading";
 				})

@@ -5,5 +5,9 @@ controller.navigation = {
     gotoIdeogramDetails: function(id){
         viewmodel.focus = id;
         viewmodel.page = 1;
+    },
+    gotoIdeogramEditor: function(id){
+        viewmodel.focus = id;
+        viewmodel.page = 2;
     }
 };

@@ -25,6 +25,7 @@ header {
 	float: right;
 	display: inline-block;
 	font-size: 12pt;
+	cursor: pointer;
 }
 
 h1 {
@@ -113,9 +114,13 @@ h1 {
 	vertical-align: middle;
 }
 
+.details-edit-button {
+	font-size: 10pt;
+	cursor: pointer;
+}
+
 .ideogram {
 	display: inline-block;
-	margin: 10px;
 }
 
 .ideogram-word {
@@ -149,4 +154,40 @@ rect.ideogram-point:hover {
 
 .ideogram.size-70 .ideogram-line {
 	stroke-width: 4;
+}
+
+.editor {
+	margin-left: calc(50% - 200px);
+}
+
+.editor-buttons {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+.button {
+    display: block;
+    border: 1px solid grey;
+    margin: 10px;
+}
+
+.button.selected {
+	border: 1px solid red;
+}
+
+.ideogram-editor {
+    display: inline-block;
+}
+
+.ideogram-editor.tool-move {
+	cursor: url('/buttons/moveButton.png'), auto;
+}
+
+.ideogram-editor.tool-draw {
+	cursor: url('/buttons/drawButton.png'), auto;
+}
+
+.ideogram-editor.tool-delete {
+	cursor: url('/buttons/deleteButton.png'), auto;
 }

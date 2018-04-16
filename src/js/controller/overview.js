@@ -13,6 +13,17 @@ var controller = {
             viewmodel.searchresults = data;
         });
     },
+    newDesign: function(value){
+        var id = viewmodel.focus;
+        m.request({
+            method: "POST",
+            url: API_ENDPOINT+"design/"+id,
+            data: value
+        }).then(function(data){
+            model.ideograms[id] = data;
+            model.ideograms[id].id = id;
+        });
+    },
     newMeaning: function(value){
         var id = viewmodel.focus;
         m.request({

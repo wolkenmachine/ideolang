@@ -4,4 +4,6 @@ var viewmodel = {
     language: "English",
     focus: undefined,
     page: 0,
+
+    tool: "move",
 };

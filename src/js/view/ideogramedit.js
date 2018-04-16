@@ -1,7 +1,8 @@
-var Ideogram = function(){
+var IdeogramEdit = function(){
 	return {
 		view: function(vnode){
-			var gram = vnode.attrs.gram;
+
+			var gram = vnode.attrs.gram.ideogram[0];
             var size = 400;
 
             var grid = 12;
@@ -20,17 +21,49 @@ var Ideogram = function(){
             }
 
             function snap(p){
-                return Math.floor(p);
+                return Math.round(p);
             }
-			function getpoint(line, seg, p){
 
+			function getpoint(line, seg, p){
 				return translate(gram.points[line[seg]][p]);
 			}
 
-			return m(".ideogram", [
+			return m(".ideogram-editor", {
+				class: "tool-"+viewmodel.tool
+			},[
 				m("svg", {
 					width: size,
-					height: size
+					height: size,
+					onmousedown: function(e){
+						if(viewmodel.tool === "draw"){
+							var bb = vnode.dom.getBoundingClientRect();
+							var offset = [bb.x, bb.y];
+							var update = [e.clientX, e.clientY];
+							var newida = controller.design.addPoint([
+								snap(untranslate(update[0]-offset[0])),
+								snap(untranslate(update[1]-offset[1]))
+							]);
+
+							var newidb = controller.design.addPoint([
+								snap(untranslate(update[0]-offset[0])),
+								snap(untranslate(update[1]-offset[1]))
+							]);
+							controller.design.addLine([newida, newidb]);
+
+							draghandler(function(e){
+								var bb = vnode.dom.getBoundingClientRect();
+								var offset = [bb.x, bb.y];
+								var update = [e.clientX, e.clientY];
+								controller.design.movePoint(newidb, [
+									snap(untranslate(update[0]-offset[0])),
+									snap(untranslate(update[1]-offset[1]))
+								]);
+							});
+						}
+					},
+					onmouseup: function(){
+						controller.design.removeDoubles();
+					}
 				}, [
                     m("rect",{
                         x: translate(0), y: translate(0),
@@ -78,14 +111,20 @@ var Ideogram = function(){
                         return m(IdeogramPoint,{
                             point: [translate(point[0])-3, translate(point[1])-3],
                             ondrag: function(update){
-                                var bb = vnode.dom.getBoundingClientRect();
-                                var offset = [bb.x, bb.y];
-                                gram.points[count] = [
-                                    snap(untranslate(update[0]-offset[0])),
-                                    snap(untranslate(update[1]-offset[1]))
-                                ];
-
-                            }
+								if(viewmodel.tool === "move"){
+	                                var bb = vnode.dom.getBoundingClientRect();
+	                                var offset = [bb.x, bb.y];
+	                                controller.design.movePoint(count, [
+	                                    snap(untranslate(update[0]-offset[0])),
+	                                    snap(untranslate(update[1]-offset[1]))
+	                                ]);
+								}
+                            },
+							onmouseup: function(){
+								if(viewmodel.tool === "delete"){
+									controller.design.deletePoint(count);
+								}
+							}
                         });
                     })
                 ]),
@@ -95,32 +134,6 @@ var Ideogram = function(){
 	};
 };
 
-var IdeogramLine = function(){
-	return {
-		view: function(vnode){
-            var line = vnode.attrs.points;
-			return m("line.ideogram-line",{
-				x1: line[0],  y1: line[1],
-				x2: line[2], y2: line[3]
-			});
-
-		}
-	};
-};
-
-var IdeogramCurve = function(){
-	return {
-		view: function(vnode){
-            var line = vnode.attrs.points;
-            return m("path.ideogram-line",{
-                d: "M"+line[0]+" "+ line[1]+
-                   "C"+line[2]+" "+ line[3]+","+
-                       line[4]+" "+ line[5]+","+
-                       line[6]+" "+ line[7]
-            });
-		}
-	};
-};
 
 var IdeogramPoint = function(){
     return {
@@ -130,9 +143,12 @@ var IdeogramPoint = function(){
                 x: point[0], y: point[1],
                 width: 6, height: 6,
 
-
+				onmouseup: function(){
+					vnode.attrs.onmouseup();
+				},
                 onmousedown: function(e){
                     e.preventDefault();
+
                     draghandler(function(e){
                         vnode.attrs.ondrag([
                             e.clientX,

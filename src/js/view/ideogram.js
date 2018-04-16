@@ -22,6 +22,7 @@ var Ideogram = function(){
             function snap(p){
                 return Math.floor(p);
             }
+
 			function getpoint(line, seg, p){
 
 				return translate(gram.points[line[seg]][p]);
@@ -29,9 +30,6 @@ var Ideogram = function(){
 
 			return m(".ideogram", {
 				class: "size-"+size,
-				onclick: function(){
-					controller.navigation.gotoIdeogramDetails(vnode.attrs.gram.id);
-				}
 			},[
 				m("svg", {
 					width: size,
@@ -87,27 +85,4 @@ var IdeogramCurve = function(){
             });
 		}
 	};
-};
-
-var IdeogramPoint = function(){
-    return {
-        view: function(vnode){
-            var point = vnode.attrs.point;
-            return m("rect.ideogram-point",{
-                x: point[0], y: point[1],
-                width: 6, height: 6,
-
-
-                onmousedown: function(e){
-                    e.preventDefault();
-                    draghandler(function(e){
-                        vnode.attrs.ondrag([
-                            e.clientX,
-                            e.clientY
-                        ]);
-                    });
-                }
-            });
-        }
-    };
 };
