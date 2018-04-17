@@ -33,8 +33,6 @@ header {
 	margin-left: 30px;
 }
 
-
-
 .header-left {
     vertical-align: middle;
     margin-right: 30px;
@@ -68,6 +66,21 @@ h1 {
 	cursor: pointer;
 }
 
+h2 {
+    font-size: 24pt;
+    font-weight: 200;
+}
+
+.about {
+	width: 720px;
+	margin-left: calc(50% - 360px)
+}
+
+.about-paragraph {
+	font-weight: 200;
+	margin-bottom: 20px;
+}
+
 .tagline {
 	font-size: 12px;
 }
@@ -93,16 +106,23 @@ h1 {
 		text-align: center;
 	}
 
+	.about {
+		width: 100%;
+		margin: 0px;
+		padding: 20px;
+		box-sizing: border-box;
+	}
+
 	.header-new {
 		display: none;
 	}
 
 	.header-search {
-		width: 100px;
+		width: 10%;
 	}
 
-	.header-right span {
-		margin-left: 0px;
+	.header-right {
+
 	}
 }
 

@@ -11,26 +11,24 @@ var Menu = function(){
 					placeholder: "search",
 					value: viewmodel.search,
 					oninput: function(e){
-						if(viewmodel.page === 1){
-							viewmodel.page = 0;
+						if(viewmodel.page !== 0){
+							controller.navigation.gotoOverview();
 						}
 						viewmodel.search = e.target.value;
 						controller.find(viewmodel.search);
 					}
 				}),
 				m(".header-right",[
-					m("span.header-new",{
-						onclick: function(){
-							controller.newIdeogram(function(id){
-								controller.navigation.gotoIdeogramDetails(id);
-							});
-						}
-					},"+ New"),
 					m("span",{
 						onclick: function(){
 							viewmodel.menu = 1;
 						}
 					},viewmodel.language),
+					m("span",{
+						onclick: function(){
+							viewmodel.menu = 2;
+						}
+					},"Menu"),
 				]),
 				(viewmodel.menu === 1) ? [
 					m(".popup-back",{
@@ -47,6 +45,29 @@ var Menu = function(){
 							}
 						}, l));
 					})),
+				] : [],
+				(viewmodel.menu === 2) ? [
+					m(".popup-back",{
+						onclick: function(){
+							viewmodel.menu = 0;
+						}
+					}),
+					m(".language-picker",{},[
+						m("div", m("span.details-language",{
+							onclick: function(){
+								viewmodel.menu = 0;
+								controller.newIdeogram(function(id){
+									controller.navigation.gotoIdeogramDetails(id);
+								});
+							}
+						},"+ New Ideogram")),
+						m("div", m("span.details-language",{
+							onclick: function(){
+								viewmodel.menu = 0;
+								controller.navigation.gotoAboutPage();
+							}
+						},"About Ideolang")),
+					]),
 				] : []
 			]);
 		}

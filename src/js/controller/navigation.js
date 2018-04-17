@@ -15,12 +15,20 @@ controller.navigation = {
         viewmodel.focus = id;
         viewmodel.page = 2;
     },
+
+    gotoAboutPage: function(p){
+        viewmodel.page = 3;
+        if(!p){window.history.pushState('about', 'about', '/#!/about/');}
+    },
     loadUrl: function(){
         var url = window.location.href.split("/#!/");
-        if(url[1] !== ""){
+        if(url[1] !==undefined && url[1] !== ""){
             var params = url[1].split("/");
             if(params[0]==="ideogram"){
                 controller.navigation.gotoIdeogramDetails(params[[1]],true);
+            }
+            if(params[0]==="about"){
+                controller.navigation.gotoAboutPage(true);
             }
         } else {
             controller.navigation.gotoOverview(true);
