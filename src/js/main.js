@@ -13,8 +13,6 @@ var App = function(){
 	};
 };
 
-m.route(document.body, "/", {
-	"/": App,
-});
+m.mount(document.body,  App);
 
-controller.loadOverview();
+controller.navigation.loadUrl();
