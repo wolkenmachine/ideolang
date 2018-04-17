@@ -288,6 +288,30 @@ rect.ideogram-point:hover {
     margin: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+	.editor {
+		margin: 0px;
+	}
+
+	.editor-buttons {
+	    text-align: center;
+		display: block;
+		margin-right: 0px;
+	}
+
+	.button {
+	    display: inline-block;
+		width: 30px;
+		height: 30px;
+	}
+
+	.ideogram-editor {
+	    display: block;
+		width: 100%;
+		text-align: center;
+	}
+}
+
 .button.selected {
 	border: 1px solid red;
 }

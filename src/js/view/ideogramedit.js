@@ -63,6 +63,37 @@ var IdeogramEdit = function(){
 					},
 					onmouseup: function(){
 						controller.design.removeDoubles();
+					},
+					ontouchstart: function(e){
+						e.preventDefault();
+						if(viewmodel.tool === "draw"){
+							var bb = vnode.dom.getBoundingClientRect();
+							var offset = [bb.x, bb.y];
+							var update = [e.touches[0].clientX, e.touches[0].clientY];
+							var newida = controller.design.addPoint([
+								snap(untranslate(update[0]-offset[0])),
+								snap(untranslate(update[1]-offset[1]))
+							]);
+
+							var newidb = controller.design.addPoint([
+								snap(untranslate(update[0]-offset[0])),
+								snap(untranslate(update[1]-offset[1]))
+							]);
+							controller.design.addLine([newida, newidb]);
+
+							touchdraghandler(function(e){
+								var bb = vnode.dom.getBoundingClientRect();
+								var offset = [bb.x, bb.y];
+								var update = [e.touches[0].clientX, e.touches[0].clientY];
+								controller.design.movePoint(newidb, [
+									snap(untranslate(update[0]-offset[0])),
+									snap(untranslate(update[1]-offset[1]))
+								]);
+							});
+						}
+					},
+					ontouchend: function(){
+						controller.design.removeDoubles();
 					}
 				}, [
                     m("rect",{
@@ -153,6 +184,20 @@ var IdeogramPoint = function(){
                         vnode.attrs.ondrag([
                             e.clientX,
                             e.clientY
+                        ]);
+                    });
+                },
+				ontouchend: function(){
+					vnode.attrs.onmouseup();
+				},
+				ontouchstart: function(e){
+                    e.preventDefault();
+
+                    touchdraghandler(function(e){
+						console.log(e);
+                        vnode.attrs.ondrag([
+                            e.touches[0].clientX,
+                            e.touches[0].clientY
                         ]);
                     });
                 }
