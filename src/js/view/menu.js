@@ -19,7 +19,7 @@ var Menu = function(){
 					}
 				}),
 				m(".header-right",[
-					m("span",{
+					m("span.header-new",{
 						onclick: function(){
 							controller.newIdeogram(function(id){
 								controller.navigation.gotoIdeogramDetails(id);

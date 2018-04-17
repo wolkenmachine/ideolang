@@ -19,6 +19,7 @@ header {
 	box-sizing: border-box;
 	position: fixed;
 	top: 0px;
+	z-index: 99999;
 }
 
 .header-right {
@@ -31,6 +32,8 @@ header {
 .header-right span {
 	margin-left: 30px;
 }
+
+
 
 .header-left {
     vertical-align: middle;
@@ -71,12 +74,36 @@ h1 {
 
 .app {
 	margin-top: 150px;
-
+	margin-bottom: 150px;
 }
 
 .overview {
 	width: 960px;
 	margin-left: calc(50% - 480px)
+}
+
+@media only screen and (max-width: 600px) {
+	.app {
+		width: 100%;
+	}
+
+	.overview {
+		width: 100%;
+		margin: 0px;
+		text-align: center;
+	}
+
+	.header-new {
+		display: none;
+	}
+
+	.header-search {
+		width: 100px;
+	}
+
+	.header-right span {
+		margin-left: 0px;
+	}
 }
 
 .overview-el {
@@ -147,6 +174,7 @@ h1 {
 .details-related-el {
 	width: 30%;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .details-related-meaning {
@@ -196,6 +224,17 @@ h1 {
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+	.details-languages {
+		display: none;
+	}
+
+	.details-related-el {
+		width: calc(100vw - 60px);
+		display: block;
+	}
 }
 
 .ideogram-word {
@@ -270,6 +309,7 @@ rect.ideogram-point:hover {
 }
 
 .language-picker {
+	background-color: white;
 	position: absolute;
 	top: 50px;
 	right: 15px;
@@ -278,6 +318,7 @@ rect.ideogram-point:hover {
 	width: 150px;
 	padding: 20px;
 	line-height: normal;
+	z-index: 99999;
 }
 .popup-back {
 	position: absolute;

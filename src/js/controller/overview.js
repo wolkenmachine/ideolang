@@ -1,4 +1,4 @@
-var API_ENDPOINT = "http://localhost:3000/";
+var API_ENDPOINT = "/api/";
 
 var controller = {
     find: function(value){
@@ -48,8 +48,10 @@ var controller = {
                 related: value
             }
         }).then(function(data){
-            model.ideograms[id] = data;
+            model.ideograms[id] = data.a;
             model.ideograms[id].id = id;
+            model.ideograms[value] = data.b;
+            model.ideograms[value].id = value;
         });
     },
     newIdeogram: function(callback){
