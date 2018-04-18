@@ -23,11 +23,19 @@ var Details = function(){
 							m("img",{src: "/buttons/drawButton.png"}),
 							m(Ideogram,{gram: gram, size: 300}),
 						]),
-						m(".details-meaning", [
+						m(".details-meanings", [
 							gram.meaning[viewmodel.language] ? [
-								m(".details-meaning-main", gram.meaning[viewmodel.language][0]),
-								gram.meaning[viewmodel.language].slice(1).map(function(e){
-									return m(".details-meaning-secondary", e);
+								gram.meaning[viewmodel.language].map(function(e, count){
+									return m(Meaning, {
+										meaning: e,
+										onnew: function(e){
+											controller.updateMeaning(e, count);
+										}
+									});
+									//return m(".details-meaning", [
+									//	e,
+									//	m("span.downvote",{},"")
+									//]);
 								}),
 							] : [],
 							m(NewMeaning, {

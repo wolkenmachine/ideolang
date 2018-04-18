@@ -38,6 +38,21 @@ var controller = {
             model.ideograms[id].id = id;
         });
     },
+    updateMeaning: function(value, position){
+        var id = viewmodel.focus;
+        m.request({
+            method: "POST",
+            url: API_ENDPOINT+"updatemeaning/"+id,
+            data: {
+                language: viewmodel.language,
+                value: value,
+                position: position
+            }
+        }).then(function(data){
+            model.ideograms[id] = data;
+            model.ideograms[id].id = id;
+        });
+    },
     newRelation: function(value){
         console.log(value);
         var id = viewmodel.focus;

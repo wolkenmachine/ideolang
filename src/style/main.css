@@ -165,14 +165,26 @@ h2 {
 	width: calc(100% - 300px);
 }
 
-.details-meaning {
+.details-meanings {
 	margin-left: 30px;
 	display: inline-block;
 	vertical-align: top;
 }
 
-.details-meaning-main {
+.details-meaning:first-child {
 	font-size: 24pt;
+}
+
+.downvote{
+	display: none;
+	font-size: 8pt;
+	color: grey;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.details-meaning:hover .downvote{
+	display: inline-block;
 }
 
 .details-newelement {
